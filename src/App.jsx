@@ -1,17 +1,14 @@
 import { useState, useRef } from 'react';
 import * as htmlToImage from 'html-to-image';
-import Preview from './preview';
+import Preview from './Preview';
 
 function App() {
 
-  const [file, setFile] = useState();
-
   const domEl = useRef(null);
 
+  // download image
   const downloadImage = async () => {
     const dataUrl = await htmlToImage.toPng(domEl.current);
- 
-    // download image
     const link = document.createElement('a');
     link.download = "html-to-img.png";
     link.href = dataUrl;
@@ -71,7 +68,12 @@ function App() {
         <div className='flex flex-col mb-5'>
           <span>Imagen principal</span>
           <input onChange={(e) => {onChangeValue(e)}} type="file" name='images' className='border'/>
-          <img src={file} />
+          <span>Imagen 2</span>
+          <input onChange={(e) => {onChangeValue(e)}} type="file" name='images' className='border'/>
+          <span>Imagen 3</span>
+          <input onChange={(e) => {onChangeValue(e)}} type="file" name='images' className='border'/>
+          <span>Imagen 4</span>
+          <input onChange={(e) => {onChangeValue(e)}} type="file" name='images' className='border'/>
         </div>
         
         <button type='submit' className='bg-gray-100 border border-black p-5 rounded-2xl' onClick={
