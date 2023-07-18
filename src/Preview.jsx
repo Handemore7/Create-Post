@@ -28,9 +28,9 @@ const Preview = ( {data} ) => {
             <img src="./FondoInfo.svg" alt="" className=''/>
           </div>
           <div className='relative mt-[75%]'>
-            <img className='border-2 border-white w-[10vh] h-[10vh] rounded-full absolute left-[1vh] top-[-9vh]' src="./img4.jpeg" alt="" />
-            <img className='border-2 border-white w-[11vh] h-[11vh] rounded-full absolute left-[8vh] top-[-5vh]' src="./img3.jpeg" alt="" />
-            <img className='border-2 border-white w-[12vh] h-[12vh] rounded-full absolute left-[1vh] top-[-2vh]' src="./img2.jpeg" alt="" />
+            <img className='border-2 border-white w-[10vh] h-[10vh] rounded-full absolute left-[1vh] top-[-9vh]' src={`${data.images[1]}`} alt="" />
+            <img className='border-2 border-white w-[11vh] h-[11vh] rounded-full absolute left-[8vh] top-[-5vh]' src={`${data.images[2]}`} alt="" />
+            <img className='border-2 border-white w-[12vh] h-[12vh] rounded-full absolute left-[1vh] top-[-2vh]' src={`${data.images[3]}`} alt="" />
           </div>
     </div>
   )
