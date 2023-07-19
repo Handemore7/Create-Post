@@ -1,6 +1,6 @@
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import { arrayMove, SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
-import ImageContainer from "./utils/imageContainer";
+import ImageContainer from "./utils/ImageContainer";
 
 const UploadAndDisplayImage = ({data, setData}) => {
 
