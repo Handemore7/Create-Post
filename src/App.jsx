@@ -26,16 +26,13 @@ function App() {
       images: []
   })
 
-  
 
   return (
     <>
-      {/* Image visualization */}
       <div ref={domEl}>
         <Preview data={data}/>
       </div>
 
-      {/* Form data */}
       <Form data={data} setData={setData} downloadImage={downloadImage}/>
     </>
   )
