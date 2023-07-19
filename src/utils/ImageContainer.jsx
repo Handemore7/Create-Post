@@ -1,8 +1,6 @@
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 
-import React from 'react'
-
 const ImageContainer = ( props ) => {
   
     const { attributes, listeners, setNodeRef, transform, transition} = useSortable({id: props.url});
@@ -12,7 +10,15 @@ const ImageContainer = ( props ) => {
     }
 
   return (
-        <img ref={setNodeRef} style={style} {...attributes} {...listeners} src={props.url} className='h-[10vh]'/>
+    <div className='h-[10vh] w-[10vh] flex relative border border-red-500'>
+      <img ref={setNodeRef} className='w-full h-full object-cover' style={style} {...attributes} {...listeners} src={props.url}/>
+      {props.value <= 3 ? 
+        <div className='bg-white h-[2.5vh] w-[2.5vh] absolute align-middle flex'>
+          <span className='text-black text-sm w-full text-center'>{props.value + 1}</span>
+        </div>
+        : ''
+      }
+    </div>
   )
 }
 

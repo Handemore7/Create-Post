@@ -1,4 +1,4 @@
-import { DndContext, closestCenter } from "@dnd-kit/core";
+import { DndContext, closestCenter, TouchSensor, useSensor, useSensors, MouseSensor } from "@dnd-kit/core";
 import { arrayMove, SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 import ImageContainer from "./utils/ImageContainer";
 
@@ -14,8 +14,7 @@ const UploadAndDisplayImage = ({data, setData}) => {
 
   function handleDragEnd(event) {
     const {active, over} = event;
-    console.log('active: ' +active.id);
-    console.log('disabled: ' +over.id);
+
     if (active.id !== over.id) {
       setData((items) => {
         const activeIndex = items.images.indexOf(active.id);
@@ -25,13 +24,26 @@ const UploadAndDisplayImage = ({data, setData}) => {
       })
     }
   }
+  const touchSensor = useSensor(TouchSensor, {
+    // Press delay of 250ms, with tolerance of 5px of movement
+    activationConstraint: {
+      delay: 250,
+      tolerance: 5,
+    },
+  });
+  const mouseSensor = useSensor(MouseSensor);
+
+  const sensors = useSensors(
+    mouseSensor,
+    touchSensor,
+  );
 
   return (
-      <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd} >
+      <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd} >
       <input type="file" multiple accept="image/*" name='images' onChange={onImageChange} />
         <SortableContext items={data.images} strategy={rectSortingStrategy} >
-          <div className="flex">
-            {data.images.map(imageSrc => <ImageContainer key={imageSrc} url={imageSrc}/>)}
+          <div className="flex flex-wrap">
+            {data.images.map((imageSrc, i) => <ImageContainer key={imageSrc} url={imageSrc} value={i}/>)}
           </div>
         </SortableContext>
       </DndContext>

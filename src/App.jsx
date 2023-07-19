@@ -30,7 +30,7 @@ function App() {
   return (
     <>
       <div ref={domEl}>
-        <Preview data={data}/>
+        <Preview data={data} setData={setData}/>
       </div>
 
       <Form data={data} setData={setData} downloadImage={downloadImage}/>

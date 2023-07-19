@@ -31,7 +31,7 @@ const Form = ({data, setData, downloadImage}) => {
 
         <UploadAndDisplayImage data={data} setData={setData}/>
         
-        <button type='submit' className='bg-gray-100 border border-black p-5 rounded-2xl' onClick={
+        <button type='submit' className='bg-gray-100 border border-black p-5 rounded-2xl mt-10' onClick={
             (e)=>{
               downloadImage();
               e.preventDefault();
